@@ -1,15 +1,14 @@
 require 'sinatra'
-require 'statsd'
+require 'librato-statsd-ruby'
 
 $statsd = Statsd.new '127.0.0.1', 8125
 
 class Libruto < Sinatra::Base
   get '/' do
-    $statsd.increment 'bryan.tests#application=sinatra,ruby=2.4.beta', 1
-    $statsd.increment 'bryan.tests#application=sinatra,ruby=2.2.3', 1
-    $statsd.increment 'bryan.tests#application=sinatra,ruby=2.3.1', 1
-    $statsd.increment 'bryan.tests#application=sinatra,ruby=1.9.3', 1
-    $statsd.gauge 'bryan.tests#application=sinatra,ruby=1.9.3,action=index', 4
+    $statsd.increment 'bryan.tests', 1, tags: { application: 'sinatra', ruby: '2.4.1.beta' }
+    $statsd.increment 'bryan.tests', 1, tags: { application: 'sinatra', ruby: '2.3.3' }
+    $statsd.increment 'bryan.tests', 1, tags: { application: 'sinatra', ruby: '1.9.3' }
+    $statsd.increment 'bryan.tests', 1, tags: { application: 'sinatra', ruby: '2.2.3' }
     'Libruto'
   end
 end

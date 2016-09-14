@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bryanmikaelian/librato-statsd-ruby.git
-  revision: a32a9d7e2b1ddc6793aae0c84296f016e4c6cf7e
+  revision: 3e55f96b3c0e1fbd2ee620f165385a51898476aa
   specs:
     librato-statsd-ruby (1.0.0.beta)
 
